@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weebhub/homePage.dart';
 import 'package:weebhub/onboard.dart';
 
 void main() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weebhub/login.dart';
-import 'package:weebhub/login.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({super.key});
@@ -14,9 +13,14 @@ class _OnboardState extends State<Onboard> {
   final PageController _pageController = PageController(); // Controller untuk PageView
   int _currentPage = 0; // Menyimpan halaman saat ini
 
+  // Warna tema merah kecokelatan
+  final Color themeColor = const Color(0xFF8B4513);
+  final Color secondaryColor = const Color(0xFFD2691E);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFF8F5), // Latar belakang lembut
       body: SafeArea(
         child: Column(
           children: [
@@ -25,24 +29,24 @@ class _OnboardState extends State<Onboard> {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: PageView(
-                  controller: _pageController, // Menghubungkan PageView dengan controller
+                  controller: _pageController,
                   onPageChanged: (page) {
                     setState(() {
-                      _currentPage = page; // Mengupdate halaman yang aktif
+                      _currentPage = page;
                     });
                   },
                   children: [
                     // Halaman pertama
                     _buildOnboardPage(
-                      'assets/gojoCat.json',
+                      'assets/animated-2.json',
                       'Find Something That Suits You',
-                      'Find Something That Suits You',
+                      'Fill Your Room with Anime Collections And Merch',
                     ),
                     // Halaman kedua
                     _buildOnboardPage(
-                      'assets/animated-.json',
-                      'Explore a Variety of Options',
-                      'Explore different categories and products',
+                      'assets/gojoCat.json',
+                      'Be Who You Are',
+                      'Who said Weeb cant have Style',
                     ),
                     // Halaman ketiga
                     _buildOnboardPage(
@@ -65,7 +69,8 @@ class _OnboardState extends State<Onboard> {
                   if (_currentPage > 0)
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent, // Ganti dengan warna yang lebih terang
+                        backgroundColor: themeColor, // Warna merah kecokelatan
+                        foregroundColor: Colors.white, // Warna teks terang
                         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -83,7 +88,8 @@ class _OnboardState extends State<Onboard> {
                   if (_currentPage < 2)
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent, // Ganti dengan warna yang lebih terang
+                        backgroundColor: themeColor, // Warna merah kecokelatan
+                        foregroundColor: Colors.white, // Warna teks terang
                         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -101,14 +107,14 @@ class _OnboardState extends State<Onboard> {
                   if (_currentPage == 2)
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.greenAccent, // Ganti dengan warna hijau cerah
+                        backgroundColor: secondaryColor, // Warna aksen merah kecokelatan
+                        foregroundColor: Colors.white, // Warna teks terang
                         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                       onPressed: () {
-                        // Navigasi ke halaman utama (HomePage)
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
@@ -142,11 +148,11 @@ class _OnboardState extends State<Onboard> {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24,
-                  color: Colors.black,
-                ),
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 24,
+              color: themeColor, // Warna judul merah kecokelatan
+            ),
           ),
           const SizedBox(height: 15),
           Padding(
